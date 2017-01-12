@@ -1,7 +1,23 @@
-0.  TODO
-1.  TODO
-2.  TODO
-3.  TODO
-4.  TODO
-5.  TODO
-6.  TODO
+0.  The longest word in the English language at 45 characters. Oxford Dictionary defines it as 'an artificial long word said to mean a lung disease caused by inhaling very fine ash and sand dust'.
+1.  'getrusage' - get resource usage. It returns the resource usage measures for who (self, children or thread). Function has form of int getrusage(int who, struct rusage *usage);
+2.  There are 16 variables within struct rusage; 2 structs and 14 longs.
+3.  We pass by reference so that the function can be used recursively without complication.
+4.  int main accepts two or three arguments the second argument is optional, and dictates the dictionary for use, the last argument defines the text for assessment.
+
+    After checking the command line arguments are present and verifying that the library was successfully loaded it also opens a text file for the output report and generates some of the template content.
+    
+    At this point, the function starts the spell check 'for loop'. It creates a temporary variable, c, and sets it equal to the file pointer, as long as it is not the end of the file. Movement of the cursor pointer is managed by the fgetc function.
+    
+    Within the for loop, it functions in this way:
+    It verifies that the character found at the point is only alphabetical or an apostrophe, if that's true it adds it into an array 'WORD' and increments the INDEX variable.
+    It then checks if the index value of the WORD array is longer than a constant LENGTH, which rules out words that are too long to be a correct word. Dictionary.h file sets this constant at 45, which matches the provided word in question 1. If the character sequence exceeds this constant, there is a command to consume the remainder of the alphabetical string and prepare for a new word.
+    If the check does not exceed the LENGTH constant, it proceeds to check if the character is a numerical digit. If that check passes true, it consumes the remainder of the alphanumeric string and prepares for a new word.
+    If both of those checks fail, then by logic it must be a proper English word, and the spell check can commence without wasting resources. This part is signified in the 'else if (index > 0)' line 102.
+    
+    Within this else if loop, it will terminate the current word if it finds a null pointer at the word[index] position. It increments the word counter variable, words, then 'flags' the before and after getrusage functions which are sandwiched around the line to set the boolean value of misspelled based on the check(word) function.
+    
+    It then updates the benchmark time_check value with the time spent verifying the word.
+    
+    If the word is misspelled, it is added to the output text document, and the misspellings variable is incremented and resets the index value and is prepared for the next word.
+5.  fgetc allows us to be precise on a per character movement, ideal for a spell checker. fscanf would need constant input on whether it is search for a string, integer or otherwise. This will result in either increasing the amount of time and input required, or decrease the accuracy of the spell checker.
+6.  The advantage of using 'const' instead of 'int' for check and load functions is that a const is a read-only int. This means that throughout the application, load and check will be protected from errant code that may compromise their ability to function correctly.
