@@ -11,7 +11,7 @@
 #undef calculate
 #undef getrusage
 
-// default dictionary
+// default dictionary **Change back to large before submitting**
 #define DICTIONARY "dictionaries/small"
 
 // prototype

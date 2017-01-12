@@ -6,6 +6,14 @@
 
 #include "dictionary.h"
 
+// define recursive node structure
+typedef struct node
+{
+    char word[LENGTH + 1];
+    struct node *next;
+}
+node;
+
 /**
  * Returns true if word is in dictionary else false.
  */
@@ -21,7 +29,7 @@ bool check(const char *word)
 bool load(const char *dictionary)
 {
     // TODO
-    return false;
+    FILE* ptr1 = fopen(*dictionary, "r");
 }
 
 /**
@@ -30,6 +38,23 @@ bool load(const char *dictionary)
 unsigned int size(void)
 {
     // TODO
+    while (fscanf(*dictionary, "%s", word) != EOF)
+    {
+        // TODO
+        node *new_node = malloc(sizeof(node));
+        if (new_node == NULL)
+        {
+            unload();
+            return false;
+        }
+        // create linked list
+        node *hashtable[50] = malloc(sizeof(node));
+        node *node2 = malloc(sizeof(node));
+        strcpy(node1->word, "Hello");
+        strcpy(node2->word, "World");
+        node1->next = node2;    
+    }
+    
     return 0;
 }
 
@@ -39,5 +64,5 @@ unsigned int size(void)
 bool unload(void)
 {
     // TODO
-    return false;
+    free;
 }
